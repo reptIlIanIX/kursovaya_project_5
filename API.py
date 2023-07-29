@@ -13,16 +13,18 @@ def employee_api():
     return all_emp
 
 
+
 def vacancies_api():
     employee_id = [1740, 5814433, 55590, 32918, 24241, 16498, 77365, 20496, 80981, 40714]
     all_vacancies = []
     for item in employee_id:
         response = requests.get(f"https://api.hh.ru/vacancies?employer_id={item}")
         resp_j = response.json()
-        all_vacancies.append(resp_j)
+        for item in (resp_j['items']):
+            all_vacancies.append(item)
     return all_vacancies
 
-
+vacancies_api()
 def save_emp_json():
     with open('company.json', 'w', encoding='utf-8') as file:
         json.dump(employee_api(), file, ensure_ascii=False, indent=4)
