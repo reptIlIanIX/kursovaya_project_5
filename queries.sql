@@ -4,3 +4,4 @@ CREATE TABLE vacancies
     name text,
     employer_id int)
 
+SELECT DISTINCT employer_name, COUNT(vacancies_id) FROM vacancies
