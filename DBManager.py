@@ -18,6 +18,8 @@ class DBManager:
         vacancies = self.cur.fetchall()
         for x in vacancies:
             print(x)
+        self.cur.close()
+        self.conn.close()
 
     def get_all_vacancies(self):
         """получает список всех вакансий с указанием названия компании, названия вакансии и зарплаты и ссылки на вакансию."""
@@ -25,6 +27,8 @@ class DBManager:
         vacancies = self.cur.fetchall()
         for x in vacancies:
             print(x)
+        self.cur.close()
+        self.conn.close()
 
     def get_avg_salary(self):
         """получает среднюю зарплату по вакансиям."""
@@ -32,6 +36,8 @@ class DBManager:
         vacancies = self.cur.fetchall()
         for x in vacancies:
             print(x)
+        self.cur.close()
+        self.conn.close()
 
     def get_vacancies_with_higher_salary(self):
         """получает список всех вакансий, у которых зарплата выше средней по всем вакансиям."""
@@ -40,6 +46,8 @@ class DBManager:
         vacancies = self.cur.fetchall()
         for x in vacancies:
             print(x)
+        self.cur.close()
+        self.conn.close()
 
     def get_vacancies_with_keyword(self):
         """получает список всех вакансий, в названии которых содержатся переданные в метод слова, например “python”."""
@@ -48,7 +56,8 @@ class DBManager:
         vacancies = self.cur.fetchall()
         for x in vacancies:
             print(x)
+        self.cur.close()
+        self.conn.close()
 
 
 db_m = DBManager()
-db_m.get_vacancies_with_keyword()
