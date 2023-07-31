@@ -26,16 +26,16 @@ import psycopg2
 with open('vacancies.json', encoding='utf-8') as f:
     data = json.load(f)
 # connect to the database
-conn = psycopg2.connect(host="localhost", database="hw_5", user="postgres", password="Layne8841")
+conn = psycopg2.connect(host="localhost", database="postgres", user="postgres", password="Layne8841")
 
 # create a cursor
 cur = conn.cursor()
 # execute the INSERT statement
 
 
-sql = "DROP TABLE vacancies"
-
-cur.execute(sql)
+# sql = "DROP TABLE vacancies"
+#
+# cur.execute(sql)
 for item in data:
     if item['salary'] != None:
         cur.execute("""CREATE TABLE if not exists vacancies
