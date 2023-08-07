@@ -61,4 +61,3 @@ class DBManager:
 
 
 db_m = DBManager()
-db_m.get_vacancies_with_keyword('Диспетчер')

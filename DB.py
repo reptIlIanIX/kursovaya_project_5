@@ -21,7 +21,7 @@ def create_and_insert_BD():
     for item in data:
         if item['salary'] != None:
             """создание таблицы vacancies"""
-            cur.execute("""CREATE TABLE if not exists vacancies
+            cur.execute("""CREATE TABLE IF NOT EXISTS vacancies
         (
             vacancies_id int PRIMARY KEY,
             vacancy_name text,
@@ -30,6 +30,7 @@ def create_and_insert_BD():
             salary_from int,
             salary_to int,
             URL VARCHAR(500)) """)
+
             cur.execute(
                 "INSERT INTO vacancies (vacancies_id, vacancy_name, employer_id, employer_name, salary_from, salary_to, URL) VALUES (%s, %s, %s, %s, %s, %s,%s)",
                 (item["id"], item['name'], item['employer']['id'], item['employer']['name'], item["salary"]["from"],

@@ -19,7 +19,8 @@ def vacancies_api():
     employee_id = [1740, 5814433, 55590, 32918, 24241, 16498, 77365, 20496, 80981, 40714]
     all_vacancies = []
     for item in employee_id:
-        response = requests.get(f"https://api.hh.ru/vacancies?employer_id={item}")
+        params_1 = {"per_page": 50}
+        response = requests.get(f"https://api.hh.ru/vacancies?employer_id={item}", params=params_1)
         resp_j = response.json()
         for item in (resp_j['items']):
             all_vacancies.append(item)
@@ -50,5 +51,3 @@ def open_vac_json():
     with open('vacancies.json', 'r', encoding='utf-8') as file:
         return json.load(file)
 
-
-save_vac_json()
