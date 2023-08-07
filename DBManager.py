@@ -49,10 +49,10 @@ class DBManager:
         self.cur.close()
         self.conn.close()
 
-    def get_vacancies_with_keyword(self):
-        """получает список всех вакансий, в названии которых содержатся переданные в метод слова, например “python”."""
+    def get_vacancies_with_keyword(self, keyword):
+        """получает список всех вакансий, в названии которых содержатся переданные в аргумент слова, например “python”."""
         self.cur.execute(
-            "SELECT * FROM vacancies WHERE vacancy_name in ('Грузчик') ")
+            f"SELECT * FROM vacancies WHERE vacancies.vacancy_name LIKE '%{keyword}%'")
         vacancies = self.cur.fetchall()
         for x in vacancies:
             print(x)
@@ -61,3 +61,4 @@ class DBManager:
 
 
 db_m = DBManager()
+db_m.get_vacancies_with_keyword('Диспетчер')
